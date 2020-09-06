@@ -18,17 +18,14 @@ function App() {
       <Container maxWidth="sm">
         <Header />
         <Router>
+          <Container maxWidth="sm" style={{marginBottom:"20px"}}>
+            <Link to="/">Home</Link>
+          </Container>
           <Switch>
             <Route exact path="/"><Home></Home>
 
             </Route>
-            <Route path="/post/:postId">
-              <CommentList></CommentList>
-            </Route>
-
-
-
-
+            <Route path="/post/:postId" component={CommentList} />
           </Switch>
 
 

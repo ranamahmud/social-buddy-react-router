@@ -8,25 +8,31 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-const Comment = () => {
-    const classes = useStyles();
-    return (
-        <Card className={classes.root}>
+const Comment = ({ comment }) => {
+  const { id, name, body } = comment;
+  // const photoUrl = `https://picsum.photos/id/${id}/400/400`;
+  const photoUrl = `https://api.adorable.io/avatars/${id}/`
+  const classes = useStyles();
+  return (
+    <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
+          style={{
+            borderRadius: '50%',
+            height: '150px',
+            width: '150px'
+          }}
           component="img"
           alt="Contemplative Reptile"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image={photoUrl}
           title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Lizard
+            {name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
+            {body}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -39,14 +45,14 @@ const Comment = () => {
         </Button>
       </CardActions>
     </Card>
-    );
+  );
 };
 
 const useStyles = makeStyles({
-    root: {
-      maxWidth: 345,
-    },
-  });
-  
+  root: {
+    maxWidth: 345,
+  },
+});
+
 
 export default Comment;

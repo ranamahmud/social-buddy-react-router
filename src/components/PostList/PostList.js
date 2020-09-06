@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import Post from '../Post/Post';
-
+export const PostContext = createContext({});
 const PostList = () => {
     const [posts, setPost] = useState([]);
     useEffect(() => {
@@ -11,9 +11,11 @@ const PostList = () => {
     }, [])
     return (
         <div>
-            {posts.length}
             {
-                posts.map(p => <Post key={p.id} post={p}></Post>)
+                posts.map(p =>
+                    <Post key={p.id} post={p}></Post>
+
+                )
             }
         </div>
     );
