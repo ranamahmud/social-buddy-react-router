@@ -11,6 +11,7 @@ import {
   withRouter
 } from "react-router-dom";
 import CommentList from './components/CommentList/CommentList';
+import NotFound from './components/NotFound/NotFound';
 
 function App() {
   return (
@@ -18,21 +19,23 @@ function App() {
       <Container maxWidth="sm">
         <Header />
         <Router>
-          <Container maxWidth="sm" style={{marginBottom:"20px"}}>
-            <Link to="/">Home</Link>
+          <Container maxWidth="sm" style={{ marginBottom: "20px" }}>
+            <ul style={{ listStyle: "none", display: "inline-flex" }}>
+              <li style={{ marginRight: "20px" }}> <Link to="/">Home</Link></li>
+              <li style={{ marginRight: "20px" }}> <Link to="#">Contact Us</Link></li>
+            </ul>
           </Container>
           <Switch>
-            <Route exact path="/"><Home></Home>
 
+            <Route exact path="/"><Home></Home>
             </Route>
             <Route path="/post/:postId" component={CommentList} />
+            <Route path="*">
+              <NotFound />
+            </Route>
           </Switch>
-
-
         </Router>
       </Container>
-
-
     </div>
 
   );

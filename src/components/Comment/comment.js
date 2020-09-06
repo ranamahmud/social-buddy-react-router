@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const Comment = ({ comment }) => {
-  const { id, name, body } = comment;
+  const { id, name, body, email } = comment;
   // const photoUrl = `https://picsum.photos/id/${id}/400/400`;
   const photoUrl = `https://api.adorable.io/avatars/${id}/`
   const classes = useStyles();
@@ -20,7 +20,9 @@ const Comment = ({ comment }) => {
           style={{
             borderRadius: '50%',
             height: '150px',
-            width: '150px'
+            width: '150px',
+            float: "left",
+            padding:"10px",
           }}
           component="img"
           alt="Contemplative Reptile"
@@ -31,17 +33,21 @@ const Comment = ({ comment }) => {
           <Typography gutterBottom variant="h5" component="h2">
             {name}
           </Typography>
+          <Typography gutterBottom variant="body2" component="p">
+            {email}
+          </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             {body}
           </Typography>
+
         </CardContent>
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          Share
+          Like
         </Button>
         <Button size="small" color="primary">
-          Learn More
+          Dislike
         </Button>
       </CardActions>
     </Card>
@@ -50,7 +56,8 @@ const Comment = ({ comment }) => {
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 700,
+    marginTop: "20px",
   },
 });
 

@@ -1,40 +1,36 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Comment from '../Comment/Comment';
 import Post from '../Post/Post';
-
 const CommentList = (props) => {
     const [post, setPost] = useState([])
     const { postId } = useParams()
     const [comments, setComments] = useState([]);
-    const url = `https://jsonplaceholder.typicode.com/comments?postId=${postId}`
-    const postUrl = `https://jsonplaceholder.typicode.com/posts/${postId}`
 
     useEffect(() => {
+        const url = `https://jsonplaceholder.typicode.com/comments?postId=${postId}`
         fetch(url)
-        .then(resp=>resp.json())
-        .then(data=> setComments(data))
+            .then(resp => resp.json())
+            .then(data => setComments(data))
     }, [])
 
-    
+
     useEffect(() => {
+        const postUrl = `https://jsonplaceholder.typicode.com/posts/${postId}`
         fetch(postUrl)
-        .then(resp=>resp.json())
-        .then(data=> setPost(data))
+            .then(resp => resp.json())
+            .then(data => setPost(data))
     }, [])
-
-    console.log(comments);
     return (
-        <div>
-            <Post post={post}/>
-            <h2>User Comments:</h2>
-            
-            {
-                comments.map(comment =>
-                    <Comment key={comment.id} comment={comment}/>
+            <div>
+                <Post post={post} />
+                <h4>Comments:</h4>
+                {
+                    comments.map(comment =>
+                        <Comment key={comment.id} comment={comment} />
                     )
-            }
-        </div>
+                }
+            </div> 
     );
 };
 
