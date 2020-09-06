@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Comment from '../Comment/Comment';
 import Post from '../Post/Post';
+import Comment from '../Comment/Comment';
 const CommentList = (props) => {
     const [post, setPost] = useState([])
     const { postId } = useParams()
